@@ -1,0 +1,26 @@
+  version: "3.9"
+
+  services:
+    mongo:
+      image: mongo:6
+      container_name: shop-mongo
+      restart: always
+      ports:
+        - "27017:27017"
+      volumes:
+        - ./docker-data/mongo:/data/db
+
+    redis:
+      image: redis:7
+      container_name: shop-redis
+      restart: always
+      ports:
+        - "6379:6379"
+
+    mailhog:
+      image: mailhog/mailhog
+      container_name: shop-mailhog
+      restart: always
+      ports:
+        - "1025:1025"   # SMTP
+        - "8025:8025"   # Web UI
